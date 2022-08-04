@@ -4,7 +4,7 @@ import trophy from '../../assets/images/trophy.png'
 export default function Ranking() {
     return (
         <RankingWrapper>
-            <div class="ranking-title">
+            <div className="ranking-title">
                 <img src={trophy} alt="trophy" />
                 <h1>Ranking</h1>
             </div>
