@@ -11,7 +11,6 @@ export default function SignUp() {
     const [register, setRegister] = useState({ name: '', email: '', password: '', confirmPassword: '' })
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
-    console.log(register)
 
     return (
         <SignWrapper>

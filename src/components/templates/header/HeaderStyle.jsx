@@ -30,8 +30,20 @@ export const HeaderWrapper = styled.div`
 
     }
 
+    .welcome {
+        cursor: initial;
+    }
+
+    .welcome:hover {
+        font-size: 14px;
+    }
+
     h2 {
         color: #9C9C9C;
+    }
+
+    .logout {
+        text-decoration: underline;   
     }
 
     div {

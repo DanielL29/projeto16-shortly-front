@@ -2,14 +2,17 @@ import { useContext } from "react";
 import { HeaderWrapper } from "./HeaderStyle";
 import UserContext from '../../../contexts/UserContext'
 import { NavLink } from "../../assets/global/GlobalStyles";
+import { logout } from "../../../functions/global";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
+    const navigate = useNavigate()
     const userLogged = user.name !== undefined
 
     return (
         <HeaderWrapper>
-            <h1>{userLogged ? `Seja bem-vindo(a), ${user.name}` : ''}</h1>
+            <h1 className="welcome">{userLogged ? `Seja bem-vindo(a), ${user.name}` : ''}</h1>
                 {userLogged ? (
                     <div>
                         <NavLink to="/home">
@@ -18,7 +21,7 @@ export default function Header() {
                         <NavLink to="/">
                             <h2>Ranking</h2>
                         </NavLink>
-                        <h2>Sair</h2>
+                        <h2 className="logout" onClick={() => logout(setUser, navigate)}>Sair</h2>
                     </div>
                 ) : (
                     <div>

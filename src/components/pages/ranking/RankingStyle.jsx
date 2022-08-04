@@ -20,7 +20,7 @@ export const RankingWrapper = styled.div`
 
     .ranking-scores {
         width: 1017px;
-        min-height: 241px;
+        height: auto;
         background-color: #FFFFFF;
         border: 1px solid rgba(120, 177, 89, 0.25);
         box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);

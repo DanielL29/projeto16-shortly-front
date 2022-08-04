@@ -20,10 +20,16 @@ export const HomeWrapper = styled.div`
         display: flex;
         flex-direction: column;
     }
+
+    .without-shorten {
+        display: flex;
+        justify-content: center;
+    }
 `
 
 export const ShortenCardWrapper = styled.div`
     display: flex;
+    margin-bottom: 42px;
     
     div {
         display: flex;

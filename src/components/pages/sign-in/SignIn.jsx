@@ -17,7 +17,7 @@ export default function SignIn() {
     return (
         <SignWrapper>
             <form onSubmit={(e) => signIn(e, login, setLoading, navigate, setUser)}>
-                <Input type="email" placeholder="E-mail" name="email" 
+                <Input type="email" placeholder="E-mail" name="email"
                     onChange={(e) => handleObjectState(e, login, setLogin)} 
                     disabled={loading} required
                 />
