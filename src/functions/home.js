@@ -48,11 +48,13 @@ async function generateShortUrl(url, token, setLoading, setShortenUrls, setUrl) 
 
 async function accessShortenUrl(index, shortUrl, shortenUrls, setShortenUrls) {
     try {
-        await axios.get(`${BASE_URL}/urls/open/${shortUrl}`)
+        const { data: url } = await axios.get(`${BASE_URL}/urls/open/${shortUrl}`)
 
         shortenUrls[index].visitCount++
 
         setShortenUrls([...shortenUrls])
+
+        window.open(url.split('to ')[1], "_blank")
     } catch (err) {
         console.log(err.response) 
 
