@@ -49,7 +49,7 @@ export default function Home() {
                 </Button>
             </div>
             <div className="urls">
-                {shortenUrls.length > 0 ? (
+                {shortenUrls?.length > 0 ? (
                     shortenUrls.filter(shorten => shorten !== undefined).map((shorten, i) => {
                         return (
                             <ShortenCard key={shorten.id}
