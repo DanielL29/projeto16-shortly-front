@@ -22,13 +22,24 @@ export default function Ranking() {
                 <h1>Ranking</h1>
             </div>
             <div className="ranking-scores">
-                {ranking.map(score => {
-                    return (
-                        loading ? 
-                            <Skeleton width="100%" height="30px" /> : 
-                            <h2 key={score.id}>{score.id}. {score.name} - {score.linksCount} links - {score.visitCount} visualizações</h2>
-                    )
-                })}
+                {loading ? (
+                    <>
+                        <Skeleton width="100%" height="20px" style={{ marginBottom: '20px' }} /> 
+                        <Skeleton width="100%" height="20px" style={{ marginBottom: '20px' }} /> 
+                        <Skeleton width="100%" height="20px" style={{ marginBottom: '20px' }} /> 
+                        <Skeleton width="100%" height="20px" style={{ marginBottom: '20px' }} /> 
+                        <Skeleton width="100%" height="20px" style={{ marginBottom: '20px' }} /> 
+                    </> 
+                ) : (
+                    ranking.length > 0 ? (
+                        ranking.map(score => {
+                            return (
+                                    
+                                 <h2 key={score.id}>{score.id}. {score.name} - {score.linksCount} links - {score.visitCount} visualizações</h2>
+                            )
+                        })
+                    ) : <h2>Sem usuarios, sem ranking no momento...</h2>   
+                )}
             </div>
             <h3>{user.token ? '' : 'Crie sua conta ou entre para usar nosso serviço!'}</h3>
         </RankingWrapper>
