@@ -25,6 +25,11 @@ export const HomeWrapper = styled.div`
         display: flex;
         justify-content: center;
     }
+
+    @media screen and (max-width: 1050px) {
+        width: 90%;
+        height: auto;
+    }   
 `
 
 export const ShortenCardWrapper = styled.div`
@@ -77,5 +82,17 @@ export const ShortenCardWrapper = styled.div`
 
     p:nth-child(1):hover, p:nth-child(2):hover {
         text-decoration: underline;
+    }
+
+    @media screen and (max-width: 1050px) {
+        div {
+            flex-wrap: wrap;
+            padding: 20px;   
+            height: 100%;
+        }
+
+        button {
+            height: auto;
+        }
     }
 `

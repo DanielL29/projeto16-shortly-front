@@ -15,4 +15,18 @@ export const BannerWapper = styled.div`
         width: 102px;
         height: 96px;
     }
+
+    @media screen and (max-width: 850px) {
+        margin-top: 150px;
+
+        h1 {
+            font-size: 50px;
+            margin-top: 0;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+    }
 `

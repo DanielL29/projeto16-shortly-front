@@ -14,4 +14,10 @@ export const SignWrapper = styled.div`
         flex-direction: column;
         align-items: center;
     }
+
+    @media screen and (max-width: 850px) {
+        form {
+            width: 90%;
+        }
+    } 
 `

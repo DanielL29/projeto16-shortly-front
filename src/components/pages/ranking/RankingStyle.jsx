@@ -27,6 +27,7 @@ export const RankingWrapper = styled.div`
         border-radius: 24px 24px 0px 0px;
         padding: 20px 40px;
         margin-bottom: 82px;
+        box-sizing: border-box;
     }
 
     h2 {
@@ -38,5 +39,25 @@ export const RankingWrapper = styled.div`
     h3 {
         font-weight: 700;
         font-size: 36px;
+    }
+
+    @media screen and (max-width: 1050px) {
+        .ranking-scores {
+            width: 90%;
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        h1, h3 {
+            font-size: 25px;
+            text-align: center;
+        }
+
+        h3 {
+            padding: 0 20px;
+        }
     }
 `

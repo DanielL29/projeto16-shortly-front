@@ -25,13 +25,13 @@ export default function Header() {
                     </div>
                 ) : (
                     <div>
-                    <NavLink to="/sign-in">
-                        <h1>Entrar</h1>
-                    </NavLink>
-                    <NavLink to="/sign-up">
-                        <h2>Cadastre-se</h2>
-                    </NavLink>
-                </div>
+                        <NavLink to="/sign-in">
+                            <h1>Entrar</h1>
+                        </NavLink>
+                        <NavLink to="/sign-up">
+                            <h2>Cadastre-se</h2>
+                        </NavLink>
+                    </div>
                 )}
         </HeaderWrapper>
     )

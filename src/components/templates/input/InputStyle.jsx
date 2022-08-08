@@ -23,4 +23,8 @@ export const InputWrapper = styled.input`
     ::placeholder {
         color: #9C9C9C;
     }
+
+    @media screen and (max-width: 850px) {
+        width: 100%;
+    }
 `

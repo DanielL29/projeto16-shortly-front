@@ -49,4 +49,10 @@ export const HeaderWrapper = styled.div`
     div {
         display: flex;
     }
+
+    @media screen and (max-width: 350px) {
+        div {
+            flex-wrap: wrap;
+        }
+    }
 `
