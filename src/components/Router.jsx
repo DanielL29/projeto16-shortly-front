@@ -5,7 +5,6 @@ import SignUp from "./pages/sign-up/SignUp";
 import Home from './pages/home/Home';
 import { useContext } from "react";
 import UserContext from "../contexts/UserContext";
-import ShortenInfo from "./pages/shorten-info/ShortenInfo";
 
 export default function Router() {
     const { user } = useContext(UserContext)
@@ -17,7 +16,6 @@ export default function Router() {
             <Route path={userLogged ? "*" : "/sign-in"} element={userLogged ? <Navigate to="/home" replace /> : <SignIn />} />
             <Route path={userLogged ? "*" : "/sign-up"} element={userLogged ? <Navigate to="/home" replace /> : <SignUp />} />
             <Route path={userLogged ? "/home" : "*"} element={userLogged ? <Home /> : <Navigate to="/sign-in" replace />} />
-            <Route path="/user/shortens/:id" element={<ShortenInfo />} />
         </Routes>
     )
 }

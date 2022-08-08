@@ -7,11 +7,11 @@ import { accessShortenUrl, deleteShortenUrl, generateShortUrl, getShortenUrls } 
 import UserContext from '../../../contexts/UserContext'
 import { Watch } from 'react-loader-spinner';
 
-function ShortenCard({ shortenInfo, accessShortenUrl, url, shortUrl, views, id, index, token, shortenUrls, setShortenUrls }) {
+function ShortenCard({ accessShortenUrl, url, shortUrl, views, id, index, token, shortenUrls, setShortenUrls }) {
     return (
         <ShortenCardWrapper>
             <div>
-                <p onClick={() => shortenInfo()}>{url}</p>
+                <p>{url}</p>
                 <p onClick={() => accessShortenUrl()}>{shortUrl}</p>
                 <p>Quantidade de visitantes: {views}</p>
             </div>

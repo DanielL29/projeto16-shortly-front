@@ -76,6 +76,14 @@ export const ShortenCardWrapper = styled.div`
         transform: scale(1.1);
     }
 
+    p:nth-child(1) {
+        width: 200px;
+        line-height: 20px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
     p:nth-child(1), p:nth-child(2) {
         cursor: pointer;
     }

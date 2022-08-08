@@ -32,13 +32,13 @@ export default function Ranking() {
                     </> 
                 ) : (
                     ranking.length > 0 ? (
-                        ranking.map(score => {
+                        ranking.map((score, i) => {
                             return (
                                     
-                                 <h2 key={score.id}>{score.id}. {score.name} - {score.linksCount} links - {score.visitCount} visualizações</h2>
+                                 <h2 key={score.id}>{i + 1}. {score.name} - {score.linksCount} links - {score.visitCount} visualizações</h2>
                             )
                         })
-                    ) : <h2>Sem usuarios, sem ranking no momento...</h2>   
+                    ) : <h2>Nenhum usuario cadastrado ainda...</h2>   
                 )}
             </div>
             <h3>{user.token ? '' : 'Crie sua conta ou entre para usar nosso serviço!'}</h3>

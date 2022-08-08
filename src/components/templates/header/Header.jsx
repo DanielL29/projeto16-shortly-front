@@ -12,7 +12,7 @@ export default function Header() {
 
     return (
         <HeaderWrapper>
-            <h1 className="welcome">{userLogged ? `Seja bem-vindo(a), ${user.name}` : ''}</h1>
+            <h1 className="welcome">{userLogged ? `Seja bem-vindo(a), ${user.name}!` : ''}</h1>
                 {userLogged ? (
                     <div>
                         <NavLink to="/home">
