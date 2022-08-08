@@ -6,6 +6,8 @@ import { useContext, useEffect, useState } from "react";
 import { accessShortenUrl, deleteShortenUrl, generateShortUrl, getShortenUrls } from "../../../functions/home";
 import UserContext from '../../../contexts/UserContext'
 import { Watch } from 'react-loader-spinner';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function ShortenCard({ accessShortenUrl, url, shortUrl, views, id, index, token, shortenUrls, setShortenUrls }) {
     return (
@@ -15,7 +17,7 @@ function ShortenCard({ accessShortenUrl, url, shortUrl, views, id, index, token,
                 <p onClick={() => accessShortenUrl()}>{shortUrl}</p>
                 <p>Quantidade de visitantes: {views}</p>
             </div>
-            <button onClick={() => deleteShortenUrl(index, id, token, shortenUrls, setShortenUrls)}>
+            <button onClick={() => deleteShortenUrl(index, id, token, shortenUrls, setShortenUrls, toast)}>
                 <FaTrashAlt className="trash" />
             </button>
         </ShortenCardWrapper>
@@ -29,7 +31,7 @@ export default function Home() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        getShortenUrls(user.token, setShortenUrls, setLoading)
+        getShortenUrls(user.token, setShortenUrls, setLoading, toast)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -39,7 +41,7 @@ export default function Home() {
                 <Input type="text" placeholder="Links que cabem no bolso" value={url} 
                     onChange={(e) => setUrl(e.target.value)} disabled={loading} />
                 <Button type="button" 
-                    onClick={() => generateShortUrl(url, user.token, setLoading, setShortenUrls, setUrl)}  
+                    createUrl={() => generateShortUrl(url, user.token, setLoading, setShortenUrls, setUrl, toast)}  
                     disabled={loading}
                 >
                     {loading ?
@@ -75,6 +77,7 @@ export default function Home() {
                         </div>
                     )}
             </div>
+            <ToastContainer />
         </HomeWrapper>
     )
 }

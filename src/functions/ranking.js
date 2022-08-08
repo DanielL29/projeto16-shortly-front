@@ -1,7 +1,8 @@
 import axios from "axios"
 import { BASE_URL } from "../utils/data"
+import { treatErrors } from "./global"
 
-async function getRanking(setLoading, setRanking) {
+async function getRanking(setLoading, setRanking, toast) {
     try {
         setLoading(true)
 
@@ -10,14 +11,9 @@ async function getRanking(setLoading, setRanking) {
         setRanking(ranking)
         setLoading(false)
     } catch (err) {
-        console.log(err.response) 
         setLoading(false)
 
-        if(err.response.data) {
-            alert(err.response.data)
-        } else {
-            alert(err.response)
-        }
+        treatErrors(err, toast)
     }
 }
 

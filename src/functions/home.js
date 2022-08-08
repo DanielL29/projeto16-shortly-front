@@ -1,7 +1,8 @@
 import axios from "axios"
 import { BASE_URL, config } from "../utils/data"
+import { callToast, treatErrors } from "./global"
 
-async function getShortenUrls(token, setShortenUrls, setLoading) {
+async function getShortenUrls(token, setShortenUrls, setLoading, toast) {
     try {
         setLoading(true)
 
@@ -10,17 +11,13 @@ async function getShortenUrls(token, setShortenUrls, setLoading) {
         setShortenUrls(shortenUrls.shortenedUrls)
         setLoading(false)
     } catch (err) {
-        console.log(err.response) 
+        setLoading(false)
 
-        if(err.response.data) {
-            alert(err.response.data)
-        } else {
-            alert(err.response)
-        }
+        treatErrors(err, toast)
     }
 }
 
-async function generateShortUrl(url, token, setLoading, setShortenUrls, setUrl) {
+async function generateShortUrl(url, token, setLoading, setShortenUrls, setUrl, toast) {
     if(url === "") return 
 
     try {
@@ -30,23 +27,17 @@ async function generateShortUrl(url, token, setLoading, setShortenUrls, setUrl) 
 
         setLoading(false)
         setUrl('')
+        callToast('URL encurtada!', toast, 'success')
+
         await getShortenUrls(token, setShortenUrls, setLoading)
     } catch (err) {
         setLoading(false)
-        console.log(err.response) 
 
-        if(err.response.data && err.response.data.details) {
-            const details = err.response.data.details.map(detail => detail.message)
-            alert(details)
-        } else if(err.response.data) {
-            alert(err.response.data)
-        } else {
-            alert(err.response)
-        }
+        treatErrors(err, toast)
     }
 }
 
-async function accessShortenUrl(index, shortUrl, shortenUrls, setShortenUrls) {
+async function accessShortenUrl(index, shortUrl, shortenUrls, setShortenUrls, toast) {
     try {
         const { data: url } = await axios.get(`${BASE_URL}/urls/open/${shortUrl}`)
 
@@ -56,17 +47,11 @@ async function accessShortenUrl(index, shortUrl, shortenUrls, setShortenUrls) {
 
         window.open(url.split('to ')[1], "_blank")
     } catch (err) {
-        console.log(err.response) 
-
-        if(err.response.data) {
-            alert(err.response.data)
-        } else {
-            alert(err.response)
-        }
+        treatErrors(err, toast)
     }
 }
 
-async function deleteShortenUrl(index, id, token, shortenUrls, setShortenUrls) {
+async function deleteShortenUrl(index, id, token, shortenUrls, setShortenUrls, toast) {
     try {
         if(window.confirm('Quer mesmo deletar esse link?')) {
             await axios.delete(`${BASE_URL}/urls/${id}`, config(token))
@@ -74,15 +59,10 @@ async function deleteShortenUrl(index, id, token, shortenUrls, setShortenUrls) {
             delete shortenUrls[index]
 
             setShortenUrls([...shortenUrls])
+            callToast('URL deletada!', toast, 'success')
         }
     } catch (err) {
-        console.log(err.response) 
-
-        if(err.response.data) {
-            alert(err.response.data)
-        } else {
-            alert(err.response)
-        }
+        treatErrors(err, toast)
     }
 }
 

@@ -6,6 +6,8 @@ import { SignWrapper } from "../sign-in/SignStyle";
 import { Watch } from "react-loader-spinner";
 import { signUp } from "../../../functions/signUp";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignUp() {
     const [register, setRegister] = useState({ name: '', email: '', password: '', confirmPassword: '' })
@@ -14,7 +16,7 @@ export default function SignUp() {
 
     return (
         <SignWrapper>
-            <form onSubmit={(e) => signUp(e, register, setLoading, navigate)}>
+            <form onSubmit={(e) => signUp(e, register, setLoading, navigate, toast)}>
                 <Input type="text" placeholder="Name" name="name" 
                     onChange={(e) => handleObjectState(e, register, setRegister)} 
                     disabled={loading} required
@@ -38,6 +40,7 @@ export default function SignUp() {
                     }
                 </Button>
             </form>
+            <ToastContainer />
         </SignWrapper>
     )
 }

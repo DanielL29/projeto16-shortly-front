@@ -5,6 +5,8 @@ import { getRanking } from "../../../functions/ranking";
 import UserContext from "../../../contexts/UserContext";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Ranking() {
     const [ranking, setRanking] = useState([])
@@ -12,7 +14,7 @@ export default function Ranking() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        getRanking(setLoading, setRanking)
+        getRanking(setLoading, setRanking, toast)
     }, [])
 
     return (
@@ -42,6 +44,7 @@ export default function Ranking() {
                 )}
             </div>
             <h3>{user.token ? '' : 'Crie sua conta ou entre para usar nosso serviço!'}</h3>
+            <ToastContainer />
         </RankingWrapper>
     )
 }

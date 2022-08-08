@@ -7,6 +7,8 @@ import Input from "../../templates/input/Input";
 import { SignWrapper } from "./SignStyle";
 import { Watch } from 'react-loader-spinner';
 import UserContext from '../../../contexts/UserContext'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function SignIn() {
     const [login, setLogin] = useState({ email: '', password: '' })
@@ -16,7 +18,7 @@ export default function SignIn() {
 
     return (
         <SignWrapper>
-            <form onSubmit={(e) => signIn(e, login, setLoading, navigate, setUser)}>
+            <form onSubmit={(e) => signIn(e, login, setLoading, navigate, setUser, toast)}>
                 <Input type="email" placeholder="E-mail" name="email"
                     onChange={(e) => handleObjectState(e, login, setLogin)} 
                     disabled={loading} required
@@ -32,6 +34,7 @@ export default function SignIn() {
                     }
                 </Button>
             </form>
+            <ToastContainer />
         </SignWrapper>
     )
 }

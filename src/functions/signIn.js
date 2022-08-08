@@ -1,7 +1,8 @@
 import axios from "axios"
 import { BASE_URL } from '../utils/data'
+import { treatErrors } from "./global"
 
-async function signIn(e, login, setLoading, navigate, setUser) {
+async function signIn(e, login, setLoading, navigate, setUser, toast) {
     e.preventDefault()
 
     try {
@@ -10,22 +11,14 @@ async function signIn(e, login, setLoading, navigate, setUser) {
         const { data: userData } = await axios.post(`${BASE_URL}/signin`, login)
 
         setUser(userData)
+        setLoading(false)
         localStorage.setItem('user', JSON.stringify(userData))
 
-        setLoading(false)
         navigate('/home')
     } catch (err) {
         setLoading(false)
-        console.log(err.response) 
 
-        if(err.response.data?.details) {
-            const details = err.response.data.details?.map(detail => detail.message)
-            alert(details)
-        } else if(err.response.data) {
-            alert(err.response.data)
-        } else {
-            alert(err.response)
-        }
+        treatErrors(err, toast)
     }
 } 
 
